@@ -34,6 +34,9 @@ def about(request):
     }
     return render(request, 'pages/about.html', context)
 
+def faqs(request):
+    return render(request, 'pages/faqs.html')
+
 # views.testing
 
 def testing(request):

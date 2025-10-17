@@ -1,188 +1,339 @@
-{% extends 'base.html' %} 
+{% extends 'base_new.html' %} {% block content %} {% load static %}
 
-{% load humanize %} 
-
-<!--block title-->
-{% block title %} | Welcome {% endblock title %}
-
-{% block content %}
-
-    <!-- Showcase -->
-    <section id="showcase">
-      <div class="container text-center">
-        <div class="home-search p-5">
-          <div class="overlay p-5">
-            <h1 class="display-4 mb-4">Clone Testing</h1>
-            <p class="lead">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Recusandae quas, asperiores eveniet vel nostrum magnam voluptatum
-              tempore! Consectetur, id commodi!
-            </p>
-            <div class="search">
-                {% comment %} fix search.html {% endcomment %}
-              <form action='{% url "listings:search" %}'>
-                <!-- Form Row 1 -->
-                <div class="form-row">
-                  <div class="col-md-12 mb-3">
-                    <label class="sr-only">Keywords</label>
-                    <input
-                      type="text"
-                      name="keywords"
-                      class="form-control"
-                      placeholder="Keyword (Clinic, Doctor, City name, Town name, etc)"
-                    />
-                  </div>
+    <!-- ##### Hero Area Start ##### {% static 'img/about.jpg' %} -->
+    <section class="hero-area">
+        <div class="hero-slides owl-carousel">
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero2.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your hotel</h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Form Row 2 -->
-                <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label class="sr-only">District</label>
-                    <select name="district" class="form-control">
-                      <option selected="true" value="">
-                        District (All)
-                      </option>
-                      {% for key,value in district_choices.items %}
-                        <option value="{{key}}">{{value}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label class="sr-only">Rooms</label>
-                    <select name="rooms" class="form-control">
-                      <option selected="true" value="">
-                        Rooms (All)
-                      </option>
-                      {% for key,value in rooms_choices.items %}
-                        <option value="{{key}}">{{value}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <select name="room_type" class="form-control" id="type">
-                      <option selected="true" value="">
-                        Room Types (All)
-                      </option>
-                      {% for key,value in room_choices.items %}
-                        <option value="{{key}}">{{value}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                </div>
-                <button class="btn btn-secondary btn-block mt-4" type="submit">
-                  Submit form
-                </button>
-              </form>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Listings -->
-    <section id="listings" class="py-5">
-      <div class="container">
-        <h3 class="text-center mb-3">Inpatient medical services</h3>
-        <div class="row">
-          <!-- Listing 1 -->
-          {% if listings %}
-          {% for listing in listings %}
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card listing-preview">
-                {% comment %} img {% endcomment %}
-              <img
-                class="card-img-top"
-                src="{{listing.photo_main.url}}"
-                alt=""
-              />
-              <div class="card-img-overlay">
-              </div>
-              <div class="card-body">
-                <div class="listing-heading text-center">
-                  <h4 class="text-primary">{{listing.title | title}}</h4>
-                  <p>
-                    <i class="fas fa-map-marker text-secondary"></i> {{listing.district | title}}
-                  </p>
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero3.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your dream hotel</h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <hr />
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-th-large"></i> Services {{listing.service}}
-                  </div>
-                  <div class="col-6">
-                    <i class="fas fa-dumbbell"></i> Screens {{listing.screen}} 
-                  </div>
-                </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-bed"></i> Rooms {{listing.rooms}}
-                  </div>
-                  <div class="col-6">
-                    <i class="fas fa-bath"></i> Professionals {{listing.professional}}
-                  </div>
-                </div>
-                <hr />
-                <div class="row py-2 text-secondary">
-                  <div class="col-12"><i class="fas fa-user"></i> {{listing.doctor.name}}</div>
-                </div>
-                <div class="row text-secondary pb-2">
-                  <div class="col-12">
-                    <i class="fas fa-clock"></i> Reservation required
-                  </div>
-                </div>
-                <hr />
-                {% comment %} listing.html {% endcomment %}
-                <a href={% url "listings:listing" listing.id %} class="btn btn-primary btn-block"
-                  >More Info</a
-                >
-              </div>
             </div>
-          </div>
-          {% endfor %}
-
-          {% else %}
-          <div class="col-md-12">
-              <h2>No Clinic Available</h2>
-          </div>
-          {% endif %}
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero1.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your perfect hotel</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
+    <!-- ##### Hero Area End ##### -->
 
-    <section id="services" class="py-5 bg-secondary text-white">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-4">
-            <i class="fas fa-comment fa-4x mr-4"></i>
-            <hr />
-            <h3>Consulting Services</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-              debitis nam! Repudiandae, provident iste consequatur hic
-              dignissimos ratione ea quae.
-            </p>
-          </div>
-          <div class="col-md-4">
-            <i class="fas fa-home fa-4x mr-4"></i>
-            <hr />
-            <h3>Inpatient Services</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-              debitis nam! Repudiandae, provident iste consequatur hic
-              dignissimos ratione ea quae.
-            </p>
-          </div>
-          <div class="col-md-4">
-            <i class="fas fa-suitcase fa-4x mr-4"></i>
-            <hr />
-            <h3>Primary Care Package</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-              debitis nam! Repudiandae, provident iste consequatur hic
-              dignissimos ratione ea quae.
-            </p>
-          </div>
+    <!-- ##### Advance Search Area Start ##### -->
+    <div class="south-search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="advanced-search-form">
+                        <!-- Search Title -->
+                        <div class="search-title">
+                            <p>Search for your hotel</p>
+                        </div>
+                        <!-- Search Form -->
+                        <form action="#" method="post" id="advanceSearch">
+                            <div class="row">
+
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <input type="input" class="form-control" name="input" placeholder="Keyword">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <select class="form-control" id="cities">
+                                            <option>Cities</option>
+                                            <option>Riga</option>
+                                            <option>Melbourne</option>
+                                            <option>Vienna</option>
+                                            <option>Vancouver</option>
+                                            <option>Toronto</option>
+                                            <option>Calgary</option>
+                                            <option>Adelaide</option>
+                                            <option>Perth</option>
+                                            <option>Auckland</option>
+                                            <option>Helsinki</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <select class="form-control" id="catagories">
+                                            <option>Room Types</option>
+                                            <option>Single</option>
+                                            <option>Double</option>
+                                            <option>Suite</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    <!-- Submit -->
+                                    <div class="form-group mb-0">
+                                        <button type="submit" class="btn south-btn">Search</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 search-form-second-steps">
+                                    <div class="row">
+
+                                        <div class="col-12 col-md-4 col-lg-3">
+                                            <div class="form-group">
+                                                <select class="form-control" id="types">
+                                                    <option>All Types</option>
+                                                    <option>Apartment <span>(30)</span></option>
+                                                    <option>Land <span>(69)</span></option>
+                                                    <option>Villas <span>(103)</span></option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4 col-lg-3">
+                                            <div class="form-group">
+                                                <select class="form-control" id="catagories2">
+                                                    <option>All Catagories</option>
+                                                    <option>Apartment</option>
+                                                    <option>Bar</option>
+                                                    <option>Farm</option>
+                                                    <option>House</option>
+                                                    <option>Store</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4 col-lg-3">
+                                            <div class="form-group">
+                                                <select class="form-control" id="Actions">
+                                                    <option>All Actions</option>
+                                                    <option>Sales</option>
+                                                    <option>Booking</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4 col-lg-3">
+                                            <div class="form-group">
+                                                <select class="form-control" id="city2">
+                                                    <option>All City</option>
+                                                    <option>City 1</option>
+                                                    <option>City 2</option>
+                                                    <option>City 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <select class="form-control" id="Actions3">
+                                                    <option>All Actions</option>
+                                                    <option>Sales</option>
+                                                    <option>Booking</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <select class="form-control" id="city3">
+                                                    <option>All City</option>
+                                                    <option>City 1</option>
+                                                    <option>City 2</option>
+                                                    <option>City 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <select class="form-control" id="city5">
+                                                    <option>All City</option>
+                                                    <option>City 1</option>
+                                                    <option>City 2</option>
+                                                    <option>City 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+    <!-- ##### Advance Search Area End ##### -->
+
+    <!-- ##### Featured Properties Area Start ##### -->
+    <section class="featured-properties-area section-padding-100-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading wow fadeInUp">
+                        <h2>Featured Hotels</h2>
+                        <p>Suspendisse dictum enim sit amet libero malesuada feugiat.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- Single Featured Property -->
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Property Thumbnail -->
+                        <div class="property-thumb">
+                            <img src="{% static 'img/bg-img/feature1.jpg' %}" alt="">
+
+                            <div class="tag">
+                                <span>Sale</span>
+                            </div>
+                            <div class="list-price">
+                                <p>$1000</p>
+                            </div>
+                        </div>
+                        <!-- Property Content -->
+                        <div class="property-content">
+                            <h5>Villa in Los Angeles</h5>
+                            <p class="location"><img src="{% static 'img/icons/location.png' %}" alt="">Upper Road 3411, no.34 CA</p>
+                            <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                <div class="new-tag">
+                                    <img src="img/icons/new.png" alt="">
+                                </div>
+                                <div class="bathroom">
+                                    <img src="img/icons/bathtub.png" alt="">
+                                    <span>2</span>
+                                </div>
+                                <div class="garage">
+                                    <img src="img/icons/garage.png" alt="">
+                                    <span>2</span>
+                                </div>
+                                <div class="space">
+                                    <img src="img/icons/space.png" alt="">
+                                    <span>120 sq ft</span>
+                                </div>
+                            </div>
+                            <br>
+                            <a href={% url "hotel_listings:hotel_listing" %} class="btn btn-primary btn-block">Book</a>                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Featured Property -->
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Property Thumbnail -->
+                        <div class="property-thumb">
+                            <img src="{% static 'img/bg-img/feature2.jpg' %}" alt="">
+
+                            <div class="tag">
+                                <span>Sale</span>
+                            </div>
+                            <div class="list-price">
+                                <p>$900</p>
+                            </div>
+                        </div>
+                        <!-- Property Content -->
+                        <div class="property-content">
+                            <h5>Beach House in Phuket</h5>
+                            <p class="location"><img src="{% static 'img/icons/location.png' %}" alt="">Upper Road 3411, no.34 CA</p>
+                            <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                <div class="new-tag">
+                                    <img src="img/icons/new.png" alt="">
+                                </div>
+                                <div class="bathroom">
+                                    <img src="img/icons/bathtub.png" alt="">
+                                    <span>2</span>
+                                </div>
+                                <div class="garage">
+                                    <img src="img/icons/garage.png" alt="">
+                                    <span>2</span>
+                                </div>
+                                <div class="space">
+                                    <img src="img/icons/space.png" alt="">
+                                    <span>120 sq ft</span>
+                                </div>
+                            </div>
+                            <br>
+                            <a href={% url "hotel_listings:hotel_listing" %} class="btn btn-primary btn-block">Book</a>                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Featured Property -->
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="300ms">
+                        <!-- Property Thumbnail -->
+                        <div class="property-thumb">
+                            <img src="{% static 'img/bg-img/feature3.jpg' %}" alt="">
+
+                            <div class="tag">
+                                <span>Sale</span>
+                            </div>
+                            <div class="list-price">
+                                <p>$1200</p>
+                            </div>
+                        </div>
+                        <!-- Property Content -->
+                        <div class="property-content">
+                            <h5>Resort in Hawaii</h5>
+                            <p class="location"><img src="img/{% static 'img/icons/location.png' %}" alt="">Upper Road 3411, no.34 CA</p>
+                            <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                <div class="new-tag">
+                                    <img src="img/icons/new.png" alt="">
+                                </div>
+                                <div class="bathroom">
+                                    <img src="img/icons/bathtub.png" alt="">
+                                </div>
+                                <div class="garage">
+                                    <img src="img/icons/garage.png" alt="">
+                                    <span>2</span>
+                                </div>
+                                <div class="space">
+                                    <img src="img/icons/space.png" alt="">
+                                    <span>120 sq ft</span>
+                                </div>
+                            </div>
+                            <br>
+                            <a href={% url "hotel_listings:hotel_listing" %} class="btn btn-primary btn-block">Book</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     </section>
+    <!-- ##### Featured Properties Area End ##### -->
 
 {% endblock %}

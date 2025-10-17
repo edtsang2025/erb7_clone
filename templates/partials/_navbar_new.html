@@ -44,14 +44,17 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="{% url "pages:testing2" %}">Home</a></li>
-
-                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="{% url "pages:index" %}">Home</a></li>
+                                <li><a href="{% url "pages:about" %}">About Us</a></li>
                                 <li><a href="{% url "hotel_listings:hotel_listings" %}">Hotels</a></li>
-                                <li><a href="blog.html">News</a></li>
-                                <li><a href="jobs.html">Jobs</a></li>
-                                <li><a href="faqs.html">FAQs</a></li>                                
+                                
+                                <li><a href="{% url "news:news" %}">News</a></li>
+                                <li><a href="{% url "job_listings:job_listings" %}">Jobs</a></li>
+                                
+                                <li><a href="{% url "pages:faqs" %}">FAQs</a></li>                                
                                 <li><a href="contact.html">Contact</a></li>
+                                <li><a href="">Register</a></li>
+                                <li><a href="">Login</a></li>
                             </ul>
 
                             <!-- Search Form -->
