@@ -14,22 +14,12 @@ def hotel_listings(request):
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
 
-    context = {"hotel_listings":paged_listings}
+    context = {"hotel_listings":paged_listings,
+               "city_choices":city_choices}
 
     return render(request, 'hotel_listings/hotel_listings.html', context)
 
 
-
-    listings = Listing.objects.filter(is_published=True)
-
-    paginator = Paginator(listings,3)
-    page = request.GET.get('page')
-    paged_listings = paginator.get_page(page)
-
-    # context = {"listings":listings}
-    context = {"listings":paged_listings}
-
-    return render(request, 'listings/listings.html', context)
 
 def hotel_listing(request, hotel_listing_id):
 
@@ -44,5 +34,24 @@ def hotel_listing(request, hotel_listing_id):
     return render(request, 'hotel_listings/hotel_listing.html', context)
 
 
+def hotel_search(request):
+    queryset_list = Hotel_Listing.objects.order_by('-list_date')
+    if 'keywords' in request.GET:
+        keywords = request.GET['keywords']
+        if keywords:
+            queryset_list =  queryset_list.filter(description__icontains=keywords)
+    if 'city' in request.GET:
+        city = request.GET['city']
+        if city:
+            queryset_list =  queryset_list.filter(city__iexact=city)
+    
+    paginator = Paginator(queryset_list,3)
+    page = request.GET.get('page')
+    paged_listings = paginator.get_page(page)
 
+    context = {"hotel_listings":paged_listings,
+               "city_choices":city_choices,
+               "values":request.GET}
+    
+    return render(request, 'hotel_listings/hotel_search.html', context)
 

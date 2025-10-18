@@ -38,7 +38,11 @@ def about(request):
     return render(request, 'pages/about.html', context)
 
 def faqs(request):
-    return render(request, 'pages/faqs.html')
+    hotel_listings = Hotel_Listing.objects.filter(is_published=True)[:3]
+    context = {"hotel_listings":hotel_listings,
+               "city_choices":city_choices}
+    
+    return render(request, 'pages/faqs.html', context)
 
 # views.testing
 

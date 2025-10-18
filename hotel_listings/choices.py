@@ -6,3 +6,4 @@ city_choices = {
     "Singapore" : "Singapore",  
     "Tokyo" : "Tokyo",    
 }
+
