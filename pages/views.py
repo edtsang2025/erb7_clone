@@ -5,6 +5,9 @@ from listings.models import Listing
 from doctors.models import Doctor
 from listings.choices import district_choices, rooms_choices, room_choices
 
+from hotel_listings.models import Hotel_Listing
+from hotel_listings.choices import city_choices
+
 # Create your views here.
 
 # functions
@@ -12,26 +15,26 @@ from listings.choices import district_choices, rooms_choices, room_choices
 # views.index
 
 def index(request):
-#    return HttpResponse("<h1>Hello world!</h1>")
-#    print(request.path)
-    listings = Listing.objects.filter(is_published=True)[:3]
-    context = {"listings":listings,
-               "district_choices":district_choices,
-               "rooms_choices":rooms_choices,
-               "room_choices":room_choices
-               }
+#    listings = Listing.objects.filter(is_published=True)[:3]
+#    context = {"listings":listings,
+#               "district_choices":district_choices,
+#               "rooms_choices":rooms_choices,
+#               "room_choices":room_choices
+#               }
+    
+    hotel_listings = Hotel_Listing.objects.filter(is_published=True)[:3]
+    context = {"hotel_listings":hotel_listings,
+               "city_choices":city_choices}
+    
     return render(request, 'pages/index.html', context)
 
 # views.about
 
 def about(request):
-#    print(request.path)
-    doctors = Doctor.objects.order_by("-hire_date")[:3]
-    mvp_doctors = Doctor.objects.all().filter(is_mvp=True)
-    context = {
-        "doctors":doctors,
-        "mvp_doctors":mvp_doctors
-    }
+    hotel_listings = Hotel_Listing.objects.filter(is_published=True)[:3]
+    context = {"hotel_listings":hotel_listings,
+               "city_choices":city_choices}
+    
     return render(request, 'pages/about.html', context)
 
 def faqs(request):

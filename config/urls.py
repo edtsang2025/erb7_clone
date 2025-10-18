@@ -31,6 +31,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ] + debug_toolbar_urls() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-admin.site.site_header = "Medical Center Admin"
-admin.site.site_title = "Medical Center Admin Portal"
-admin.site.index_title = "Welcome to Medical Center Admin Portal"
+admin.site.site_header = "Great Stay Hotel Admin"
+admin.site.site_title = "MGreat Stay Hotel Admin Portal"
+admin.site.index_title = "Welcome to Great Stay Hotel  Admin Portal"
