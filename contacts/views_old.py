@@ -22,14 +22,14 @@ def contact(request):
             has_contacted = Contact.objects.all().filter(listing_id=listing_id,user_id=user_id)
             if has_contacted:
                     messages.error(request, "You have already made an inquiry for this listing")
-                    return redirect('hotel_listings:hotel_listing', listing_id)
+                    return redirect('listings:listing', listing_id=listing_id)
         contact = Contact(listing=listing, listing_id=listing_id, name=name, email=email, phone=phone, message=message, user_id=user_id)
         contact.save()
         
         # send email
 
         send_mail(
-            'Hotel Inquiry',
+            'Clinic Inquiry',
             'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
             'edward.tsang@gmail.com',
             [doctor_email],
@@ -37,7 +37,7 @@ def contact(request):
         )
 
         messages.success(request, "Your request has been submitted, a representative will get back to you soon")
-        return redirect('hotel_listings:hotel_listing', listing_id)
+        return redirect('listings:listing', listing_id=listing_id)
 
 
 def delete_contact(request, contact_id):

@@ -1,97 +1,73 @@
 {% load static %}
+
 <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
 
-        <!-- Top Header Area -->
-        <div class="top-header-area">
-            <div class="h-100 d-md-flex justify-content-between align-items-center">
-                <div class="email-address">
-                    <a href="mailto:contact@greatstayhotel.com">contact@greatstayhotel.com</a>
-                </div>
-                <div class="phone-number d-flex">
-                    <div class="icon">
-                        <img src="{% static 'img/icons/phone-call.png' %}" alt="">
-                    </div>
-                    <div class="number">
-                        <a href="tel:+852 1234 5678">+852 1234 5678</a>
-                    </div>
-                </div>
+<header class="header-area">
+
+<!-- Top Header Area -->
+<div class="top-header-area">
+    <div class="h-100 d-md-flex justify-content-between align-items-center">
+        <div class="email-address">
+            <a href="mailto:contact@greatstayhotel.com">contact@greatstayhotel.com</a>
+        </div>
+        <div class="phone-number d-flex">
+            <div class="icon">
+                <img src="{% static 'img/icons/phone-call.png' %}" alt="">
+            </div>
+            <div class="number">
+                <a href="tel:+852 1234 5678">+852 1234 5678</a>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- Main Header Area -->
-        <div class="main-header-area" id="stickyHeader">
-            <div class="classy-nav-container breakpoint-off">
-                <!-- Classy Menu -->
-                <nav class="classy-navbar justify-content-between" id="southNav">
+<!-- Main Header Area -->
+<div class="main-header-area" id="stickyHeader">
+    <div class="classy-nav-container breakpoint-off">
+        <!-- Classy Menu -->
+        <nav class="classy-navbar justify-content-between" id="southNav">
+            <!-- Logo -->
+            <a class="nav-brand" href="{% url "pages:index" %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
 
-                    <!-- Logo -->
-                    <a class="nav-brand" href="{% url "pages:index" %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
-
-                    <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
-                    <!-- Menu -->
-                    <div class="classy-menu">
-
-                        <!-- close btn -->
-                        <div class="classycloseIcon">
-                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                        </div>
-
-                        <!-- Nav Start -->
-                        <div class="classynav">
-                            <ul>
-                                <li><a href="{% url "pages:index" %}">Home</a></li>
-                                <li><a href="{% url "pages:about" %}">About Us</a></li>
-                                <li><a href="{% url "hotel_listings:hotel_listings" %}">Hotels</a></li>
-                                
-                                <li><a href="{% url "news:news" %}">News</a></li>
-                                <li><a href="{% url "job_listings:job_listings" %}">Jobs</a></li>
-                                
-                                <li><a href="{% url "pages:faqs" %}">FAQs</a></li>                                
-                                <li><a href="contact.html">Contact</a></li>
+            <!-- Menu -->
+            <div class="classy-menu">
 
 
-{% if user.is_authenticated %}
-    <li {% if 'dashboard' in request.path %} class="nav-item active" {% else %} class="nav-item " {% endif %}>
-    <a class="nav-link" href={% url 'accounts:dashboard' %}> <i class="fa-solid fa-user"></i> Welcome {{user.username}}</a>
-    </li>
-    <!--logout -->
-    <li class='nav-item'>
-    <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">Logout</a>
-    <form action="{% url 'accounts:logout' %}" method="POST" id="logout">
-        {% csrf_token %}
-        <input type="hidden" />
-    </form>
-    </li>  
-{% else %}
-    <li {% if 'register' in request.path %} class="nav-item  active" {% else %} class="nav-item " {% endif %}>
-    <a class="nav-link" href={% url 'accounts:register' %}>Register</a>
-    </li>
-    <li {% if 'login' in request.path %} class="nav-item  active" {% else %} class="nav-item " {% endif %}>
-    <a class="nav-link" href={% url 'accounts:login' %}>Login</a>
-    </li>
-{% endif %}                                
-                            </ul>
-
-                            <!-- Search Form -->
-                            <div class="south-search-form">
-                                <form action="#" method="post">
-                                    <input type="search" name="search" id="search" placeholder="Search Anything ...">
-                                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-
-                            <!-- Search Button -->
-                            <a href="#" class="searchbtn"><i class="fa" aria-hidden="true"></i></a>
-                        </div>
-                        <!-- Nav End -->
-                    </div>
-                </nav>
+                <!-- Nav Start -->
+                <div class="classynav">
+                    <ul>
+                        <li><a href="{% url "pages:index" %}">Home</a></li>
+                        <li><a href="{% url "pages:about" %}">About Us</a></li>
+                        <li><a href="{% url "hotel_listings:hotel_listings" %}">Hotels</a></li>
+                        <li><a href="{% url "news:news" %}">News</a></li>
+                        <li><a href="{% url "job_listings:job_listings" %}">Jobs</a></li>
+                        <li><a href="{% url "pages:faqs" %}">FAQs</a></li>                                
+                        
+                        {% if user.is_authenticated %}
+                            <li>
+                            <a class="nav-link" href={% url 'accounts:dashboard' %}> <i class="fa-solid fa-user"></i> {{user.username}}</a>
+                            </li>
+                            <li>
+                            <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">Logout</a>
+                            <form action="{% url 'accounts:logout' %}" method="POST" id="logout">
+                                {% csrf_token %}
+                                <input type="hidden">
+                            </form>
+                            </li>  
+                        {% else %}
+                            <li>
+                            <a class="nav-link" href={% url 'accounts:register' %}>Register</a>
+                            </li>
+                            <li>
+                            <a class="nav-link" href={% url 'accounts:login' %}>Login</a>
+                            </li>
+                        {% endif %}                                                          
+                    </ul>
+                </div>
+                <!-- Nav End -->
             </div>
-        </div>
-    </header>
-    <!-- ##### Header Area End ##### -->
+        </nav>
+    </div>
+</div>
+</header>
+<!-- ##### Header Area End ##### -->

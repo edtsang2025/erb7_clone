@@ -39,7 +39,7 @@
             <h2>Welcome {{user.first_name | title}}</h2>
 
             {% if contacts %}
-            <p>Here are the clinic listings that you have inquired about</p>
+            <p>Here are the hotels that you have inquired about</p>
             <table class="table">
                 <thead>
                 <tr>
@@ -54,8 +54,11 @@
                     <td>{{contact.listing_id}}</td>
                     <td>{{contact.listing | title}}</td>
                     <td>
-                    <a class="btn btn-light" href="{% url 'listings:listing' contact.listing_id %}">View Listing</a>
+                    <a class="btn btn-light" href="{% url 'hotel_listings:hotel_listing' contact.listing_id %}">View Listing</a>
+                    <!--
                     <button class="btn btn-danger" data-url="{% url 'contacts:delete_contact' contact.id %}" data-toggle="modal" data-target="#deleteConfirmModal" data-id="{{contact.id}}">Delete Listing</button>
+                    -->
+                    <a class="btn btn-danger" href="{% url 'contacts:delete_contact' contact.id %}">Delete Listing</a>                 
                     <a class="btn btn-success" href="{% url 'contacts:edit_contact' contact.id %}">Edit Listing</a>                 
                     </td>
                 </tr>
