@@ -3754,13 +3754,14 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 5000;
   display: none;
   overflow: hidden;
   outline: 0; }
 
 .modal-dialog {
   position: relative;
+  top: 100px;
   width: auto;
   margin: 0.5rem;
   pointer-events: none; }
@@ -3800,7 +3801,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 5;
   background-color: #000; }
   .modal-backdrop.fade {
     opacity: 0; }

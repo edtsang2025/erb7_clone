@@ -24,72 +24,133 @@
                         <h2>FAQs</h2>
                         <p>Suspendisse dictum enim sit amet libero</p>
                     </div>
-                    <div class="about-content">
-                        <img class="wow fadeInUp" data-wow-delay="350ms" src="{% static 'img/bg-img/about.jpg' %}" alt="">
-                        <p class="wow fadeInUp" data-wow-delay="450ms">Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada. Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada feugiat. Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst. Curabitur rhoncus auctor eleifend. Fusce venenatis diam urna, eu pharetra arcu varius ac. Etiam cursus turpis lectus, id iaculis risus tempor id. Phasellus fringilla nisl sed sem scelerisque, eget aliquam magna vehicula.</p>
-                    </div>
-                </div>
 
-                <div class="col-12 col-lg-4">
-                    <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
-                        <h2>Featured Hotels</h2>
-                        <p>Suspendisse dictum enim sit amet libero</p>
-                    </div>
-
-                    <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
-
-                        <!-- Single Slide -->
-                        {% if hotel_listings %}
-                        {% for hotel_listing in hotel_listings %}
-                        <div class="single-featured-property">
-                            <!-- Property Thumbnail -->
-                            <div class="property-thumb">
-                                <img src="{{hotel_listing.photo_main.url}}" alt="">
-
-                                {% if hotel_listing.is_onsale %}
-                                    <div class="tag">
-                                        <span>Sale</span>
+                    <!-- FAQ Categories -->
+                    <div class="accordion" id="faqAccordion">
+                        <!-- Booking Questions -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bookingCollapse">
+                                    📅 Booking & Reservations
+                                </button>
+                            </h2>
+                            <div id="bookingCollapse" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-item mb-4">
+                                        <h5>How do I make a booking?</h5>
+                                        <p class="text-muted">To make a booking, simply search for your desired destination, select your dates, choose a hotel, and follow the booking process. You'll need to create an account or log in to complete your reservation.</p>
                                     </div>
-                                    <div class="list-price">
-                                        <p>{{hotel_listing.discount}}% OFF</p>
+                                    <div class="faq-item mb-4">
+                                        <h5>Can I modify my booking after confirmation?</h5>
+                                        <p class="text-muted">Yes, most bookings can be modified up to 24 hours before check-in. Log into your account, go to "My Bookings," and select the booking you wish to modify. Some rates may have restrictions on changes.</p>
                                     </div>
-                                {% endif %}
-                            </div>
-                            <!-- Property Content -->
-                            <div class="property-content">
-                                <h5>{{hotel_listing.name}}</h5>
-                                <p class="location"><i class="fa-solid fa-map" style="color: #947054;"></i> {{hotel_listing.city}}</p>
-                                <p>{{hotel_listing.description}}</p>
-                                <div class="property-meta-data d-flex align-items-end justify-content-between">
-                                    <div class="new-tag">
-                                        <i class="fa-solid fa-bed" style="color: #947054;"></i>
-                                        <span>{{hotel_listing.rooms}}</span>
-                                    </div>
-                                    <div class="bathroom">
-                                        <i class="fa-solid fa-utensils" style="color: #947054;"></i>
-                                        <span>{{hotel_listing.restaurants}}</span>
-                                    </div>
-                                    <div class="garage">
-                                        <i class="fa-solid fa-swimming-pool" style="color: #947054;"></i>
-                                        <span>{{hotel_listing.facilities}}</span>
+                                    <div class="faq-item">
+                                        <h5>What is the minimum age to book a hotel?</h5>
+                                        <p class="text-muted">The minimum age to book a hotel through our platform is 18 years old. Some hotels may have higher age requirements, which will be displayed during the booking process.</p>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="text-center">
-                                    <a href={% url "hotel_listings:hotel_listing" hotel_listing.id %} class="btn south-btn">More Info</a> 
-                                </div>                                          
-
                             </div>
                         </div>
-                        {% endfor %}
 
-                        {% else %}
-                        <div class="col-12 col-md-6 col-xl-4">
-                            <h2>No Hotel Available</h2>
+                        <!-- Payment Questions -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paymentCollapse">
+                                    💳 Payments & Pricing
+                                </button>
+                            </h2>
+                            <div id="paymentCollapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-item mb-4">
+                                        <h5>When will my credit card be charged?</h5>
+                                        <p class="text-muted">Most hotels charge your credit card at the time of booking. Some may offer pay-at-property options. The payment policy is clearly displayed during the booking process for each hotel.</p>
+                                    </div>
+                                    <div class="faq-item mb-4">
+                                        <h5>Are taxes included in the price?</h5>
+                                        <p class="text-muted">Yes, all mandatory taxes and fees are included in the displayed price. There are no hidden charges. The final price you see during booking is what you'll pay.</p>
+                                    </div>
+                                    <div class="faq-item">
+                                        <h5>What payment methods do you accept?</h5>
+                                        <p class="text-muted">We accept all major credit cards (Visa, MasterCard, American Express), debit cards, and in some cases, digital wallets like PayPal and Apple Pay.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        {% endif %}
 
+                        <!-- Cancellation Questions -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cancellationCollapse">
+                                    ❌ Cancellations & Refunds
+                                </button>
+                            </h2>
+                            <div id="cancellationCollapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-item mb-4">
+                                        <h5>What is your cancellation policy?</h5>
+                                        <p class="text-muted">Our standard cancellation policy allows free cancellation up to 24 hours before check-in. However, some hotels may have different policies, which are clearly stated during booking.</p>
+                                    </div>
+                                    <div class="faq-item mb-4">
+                                        <h5>How long does it take to receive a refund?</h5>
+                                        <p class="text-muted">Refunds typically process within 5-10 business days, depending on your bank or credit card company. You'll receive an email confirmation once the refund has been initiated.</p>
+                                    </div>
+                                    <div class="faq-item">
+                                        <h5>What if I need to cancel due to an emergency?</h5>
+                                        <p class="text-muted">In case of emergencies, please contact our customer support team immediately. We'll do our best to work with the hotel to find a suitable solution based on their policies.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Account Questions -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse">
+                                    👤 Account & Profile
+                                </button>
+                            </h2>
+                            <div id="accountCollapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-item mb-4">
+                                        <h5>How do I create an account?</h5>
+                                        <p class="text-muted">Click on "Register" in the top navigation and fill out the registration form with your details. You'll need to verify your email address to activate your account.</p>
+                                    </div>
+                                    <div class="faq-item mb-4">
+                                        <h5>I forgot my password. How can I reset it?</h5>
+                                        <p class="text-muted">Click on "Login" and then "Forgot password." Enter your email address, and we'll send you instructions to reset your password.</p>
+                                    </div>
+                                    <div class="faq-item">
+                                        <h5>Can I delete my account?</h5>
+                                        <p class="text-muted">Yes, you can delete your account by going to your profile settings. Please note that this action is permanent and will delete all your booking history and personal data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Support Questions -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#supportCollapse">
+                                    🛟 Customer Support
+                                </button>
+                            </h2>
+                            <div id="supportCollapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-item mb-4">
+                                        <h5>How can I contact customer support?</h5>
+                                        <p class="text-muted">You can reach our 24/7 customer support team through the "Contact Us" form on our website, or by emailing support@internationalhotels.com. For urgent matters, please call our hotline.</p>
+                                    </div>
+                                    <div class="faq-item mb-4">
+                                        <h5>What are your customer support hours?</h5>
+                                        <p class="text-muted">Our customer support team is available 24 hours a day, 7 days a week to assist you with any questions or concerns.</p>
+                                    </div>
+                                    <div class="faq-item">
+                                        <h5>Do you provide support in multiple languages?</h5>
+                                        <p class="text-muted">Yes, our customer support team can assist you in English, Spanish, French, German, and Mandarin Chinese.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
