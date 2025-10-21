@@ -416,7 +416,7 @@ img {
 
 .section-heading {
     position: relative;
-    z-index: 1;
+    z-index: 0;
     text-align: center;
     margin-bottom: 100px;
     img {
@@ -963,7 +963,7 @@ img {
 
 .single-featured-property {
     position: relative;
-    z-index: 1;
+    z-index: 0;
     @include trans-duration(500ms);
     overflow: hidden;
     .property-thumb {
