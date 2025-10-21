@@ -111,49 +111,54 @@
             <div class="row">
 
                 <!-- Single Featured Property -->
+                <div class="card-group">
+
                 {% if hotel_listings %}
                 {% for hotel_listing in hotel_listings %}
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
+                    <div class="card col-12 col-md-6 col-xl-4">
+                        <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Property Thumbnail -->
-                        <div class="property-thumb">
-                            <img src="{{hotel_listing.photo_main.url}}" alt="">
-                            
-                            {% if hotel_listing.discount %}
-                                <div class="tag">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="list-price">
-                                    <p>{{hotel_listing.discount}}% OFF</p>
-                                </div>
-                            {% endif %}
-                        </div>
-                        <!-- Property Content -->
-                        <div class="property-content">
-                            <h5>{{hotel_listing.name}}</h5>
-                            <p class="location"><i class="fa-solid fa-map" style="color: #947054;"></i> {{hotel_listing.city}}</p>
-                            <p>{{hotel_listing.description}}</p>
-                            <div class="property-meta-data d-flex align-items-end justify-content-between">
-                                <div class="new-tag">
-                                    <i class="fa-solid fa-bed" style="color: #947054;"></i>
-                                    <span>{{hotel_listing.rooms}}</span>
-                                </div>
-                                <div class="bathroom">
-                                    <i class="fa-solid fa-utensils" style="color: #947054;"></i>
-                                    <span>{{hotel_listing.restaurants}}</span>
-                                </div>
-                                <div class="garage">
-                                    <i class="fa-solid fa-swimming-pool" style="color: #947054;"></i>
-                                    <span>{{hotel_listing.facilities}}</span>
-                                </div>
+                            <div class="property-thumb">
+                                <img src="{{hotel_listing.photo_main.url}}" alt="">
+                                
+                                {% if hotel_listing.discount %}
+                                    <div class="tag">
+                                        <span>Sale</span>
+                                    </div>
+                                    <div class="list-price">
+                                        <p>{{hotel_listing.discount}}% OFF</p>
+                                    </div>
+                                {% endif %}
                             </div>
-                            <br>
+                        </div>
+                    
+                        <div class="card-body">
+                            <h5 class="card-title" style="height: 50px;">{{hotel_listing.name}}</h5>
+                            <p class="card-text"><i class="fa-solid fa-map" style="color: #947054;"></i>{{hotel_listing.city}}</p>
+                            <p class="card-text">{{hotel_listing.description}}</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                    <div class="new-tag">
+                                        <i class="fa-solid fa-bed" style="color: #947054;"></i>
+                                        <span style="font-size: 12px;">{{hotel_listing.rooms}}</span>
+                                    </div>
+                                    <div class="bathroom">
+                                        <i class="fa-solid fa-utensils" style="color: #947054;"></i>
+                                        <span style="font-size: 12px;">{{hotel_listing.restaurants}}</span>
+                                    </div>
+                                    <div class="garage">
+                                        <i class="fa-solid fa-swimming-pool" style="color: #947054;"></i>
+                                        <span style="font-size: 12px;">{{hotel_listing.facilities}}</span>
+                                    </div>
+                            </div>
+                            <br>                           
                             <div class="text-center">
                                 <a href={% url "hotel_listings:hotel_listing" hotel_listing.id %} class="btn south-btn">More Info</a> 
-                            </div>                           
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
 
                 {% else %}
@@ -162,6 +167,8 @@
                 </div>
                 {% endif %}
 
+            </div>
+            <!-- Single Featured Property -->
 
             </div>
         </div>
