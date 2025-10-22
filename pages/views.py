@@ -65,3 +65,7 @@ def testing(request):
 
 def testing2(request):
     return render(request, 'pages/testing2.html')
+
+def translate(request):
+    message = _("Hello, world!")
+    print(message)

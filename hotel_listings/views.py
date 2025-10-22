@@ -39,19 +39,26 @@ def hotel_search(request):
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
-            queryset_list =  queryset_list.filter(description__icontains=keywords)
+            queryset_list =  queryset_list.filter(Q(description__icontains=keywords) | Q(name__icontains=keywords) | Q(city__icontains=keywords))
     if 'city' in request.GET:
         city = request.GET['city']
         if city:
             queryset_list =  queryset_list.filter(city__iexact=city)
     
+
     paginator = Paginator(queryset_list,3)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
+
+#   print("Individual objects in QuerySet:")
+#    for obj in queryset_list:
+#        print(obj) # This will typically print the _str_ representation of the object
 
     context = {"hotel_listings":paged_listings,
                "city_choices":city_choices,
                "values":request.GET}
     
+
+
     return render(request, 'hotel_listings/hotel_search.html', context)
 

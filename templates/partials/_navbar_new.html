@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!-- ##### Header Area Start ##### -->
 
@@ -36,7 +37,7 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
-                        <li><a href="{% url "pages:index" %}">Home</a></li>
+                        <li><a href="{% url "pages:index" %}">{% trans "Home" %}</a></li>
                         <li><a href="{% url "pages:about" %}">About Us</a></li>
                         <li><a href="{% url "hotel_listings:hotel_listings" %}">Hotels</a></li>
                         <li><a href="{% url "news:news" %}">News</a></li>
