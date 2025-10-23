@@ -37,7 +37,7 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
-                        <li><a href="{% url "pages:index" %}">{% trans "Home" %}</a></li>
+                        <li><a href="{% url "pages:index" %}">Home</a></li>
                         <li><a href="{% url "pages:about" %}">About Us</a></li>
                         <li><a href="{% url "hotel_listings:hotel_listings" %}">Hotels</a></li>
                         <li><a href="{% url "news:news" %}">News</a></li>
@@ -51,6 +51,7 @@
                             </li>
                             <li>
                             <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">Logout</a>
+                            
                             <form action="{% url 'accounts:logout' %}" method="POST" id="logout">
                                 {% csrf_token %}
                                 <input type="hidden">
@@ -63,7 +64,8 @@
                             <li>
                             <a class="nav-link" href={% url 'accounts:login' %}>Login</a>
                             </li>
-                        {% endif %}                                                          
+                        {% endif %}                     
+
                     </ul>
                 </div>
                 <!-- Nav End -->

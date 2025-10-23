@@ -1,10 +1,24 @@
-{% extends 'base.html' %}
-
+{% extends 'base_new.html' %} {% load static %}
+ 
 <!-- load widget_tweaks -->
 
 {% load widget_tweaks %}
 
 {% block content %}
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img" style="background-image: url({% static 'img/bg-img/hero1.jpg' %});">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-content">
+                    {% comment %} <h3 class="breadcumb-title">Member Login</h3> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
 
 <div class="containter mt-5">
     <div class="row justify-content-center">
@@ -22,7 +36,7 @@
                     {% endif %}
                     {{form.message|add_class:"form-control"}}
                 </div>
-                <button class="btn btn-primary w-100" type="submit">Submit</button>
+                <button class="btn south-btn w-100" type="submit">Submit</button>
             </form>
             </div>
         </div>

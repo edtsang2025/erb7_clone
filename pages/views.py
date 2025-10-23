@@ -26,6 +26,8 @@ def index(request):
     context = {"hotel_listings":hotel_listings,
                "city_choices":city_choices}
     
+    print(request.LANGUAGE_CODE)
+    
     return render(request, 'pages/index.html', context)
 
 # views.about
