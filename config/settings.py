@@ -143,6 +143,7 @@ USE_TZ = True
 
 LANGUAGES = [
     ('en', 'English'),
+    ('zh-Hans', 'Simplified Chinese'),    
     ('zh-Hant', 'Traditional Chinese'),
 ]
 

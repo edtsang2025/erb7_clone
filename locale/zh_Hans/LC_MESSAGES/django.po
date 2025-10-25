@@ -23,11 +23,11 @@ msgstr ""
 
 #: templates/partials/_navbar_new_i18n.html:40
 msgid "Home"
-msgstr "首頁"
+msgstr "首页"
 
 #: templates/partials/_navbar_new_i18n.html:41
 msgid "About Us"
-msgstr "關於我們"
+msgstr "关于我们"
 
 #: templates/partials/_navbar_new_i18n.html:42
 msgid "Hotels"
@@ -35,19 +35,19 @@ msgstr "酒店"
 
 #: templates/partials/_navbar_new_i18n.html:43
 msgid "News"
-msgstr "新聞"
+msgstr "新闻"
 
 #: templates/partials/_navbar_new_i18n.html:44
 msgid "Jobs"
-msgstr "工作機會"
+msgstr "工作机会"
 
 #: templates/partials/_navbar_new_i18n.html:45
 msgid "FAQs"
-msgstr "常見問題"
+msgstr "常见问题"
 
 #: templates/partials/_navbar_new_i18n.html:46
 msgid "Contact"
-msgstr "聯絡我們"
+msgstr "联系我们"
 
 #: templates/partials/_navbar_new_i18n.html:53
 msgid "Logout"
@@ -55,8 +55,8 @@ msgstr "登出"
 
 #: templates/partials/_navbar_new_i18n.html:62
 msgid "Register"
-msgstr "註冊"
+msgstr "注册"
 
 #: templates/partials/_navbar_new_i18n.html:65
 msgid "Login"
-msgstr "登入"
+msgstr "登录"

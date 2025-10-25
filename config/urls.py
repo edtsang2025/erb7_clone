@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('', include("pages.urls", namespace="pages")),
+#    path('', include("pages.urls", namespace="pages")),
     path('hotel_listings/', include("hotel_listings.urls", namespace="hotel_listings")),
     path('job_listings/', include("job_listings.urls", namespace="job_listings")),     
     path('news/', include("news.urls", namespace="news")),        
@@ -33,9 +33,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ] + debug_toolbar_urls() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-#urlpatterns += i18n_patterns(
-#    path('', include("pages.urls", namespace="pages")),
-#)
+urlpatterns += i18n_patterns(
+    path('', include("pages.urls", namespace="pages")),
+)
 
 admin.site.site_header = "Great Stay Hotel Admin"
 admin.site.site_title = "MGreat Stay Hotel Admin Portal"
