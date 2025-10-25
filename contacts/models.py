@@ -12,6 +12,8 @@ class Contact(models.Model):
     message = models.TextField(blank=True)
     contact_date = models.DateTimeField(default=datetime.now, blank=False)
     user_id = models.IntegerField(blank=True)
+    checkin = models.DateTimeField(default=datetime.now, blank=False)
+    checkout = models.DateTimeField(default=datetime.now, blank=False)
 
     def __str__(self):
         return self.name

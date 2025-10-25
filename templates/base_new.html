@@ -26,6 +26,8 @@
 
     <link rel="stylesheet" href={% static 'style.css' %} />
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 </head>
 
     {% comment %} {% include 'partials/_topbar_new.html' %} {% endcomment %}
@@ -56,6 +58,13 @@
     <script src={% static 'js/main.js' %}></script>
     <script src={% static 'js/modal.js' %}></script>
 
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+    <script>
+    flatpickr("#id_my_datetime_field", {
+        dateFormat: "Y-m-d",
+    });
+    </script>
+
+</body>
 </html>
