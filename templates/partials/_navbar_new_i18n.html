@@ -30,23 +30,30 @@
             <!-- Logo -->
             <a class="nav-brand" href="{% url "pages:index" %}"><img src="{% static 'img/core-img/gs_logo.png' %}" alt=""></a>
 
+            <!-- Toggler -->
+            <div class="classy-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span><span></span>
+            </div>
+
+
             <!-- Menu -->
             <div class="classy-menu">
 
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
-                        <li><a href="{% url "pages:index" %}">{% trans "Home" %}</a></li>
-                        <li><a href="{% url "pages:about" %}">{% trans "About Us" %}</a></li>
-                        <li><a href="{% url "hotel_listings:hotel_listings" %}">{% trans "Hotels" %}</a></li>
-                        <li><a href="{% url "news:news" %}">{% trans "News" %}</a></li>
-                        <li><a href="{% url "job_listings:job_listings" %}">{% trans "Jobs" %}</a></li>
-                        <li><a href="{% url "pages:faqs" %}">{% trans "FAQs" %}</a></li>                                
-                        <li><a href="{% url "pages:contacts" %}">{% trans "Contact" %}</a></li>    
+                        {% get_current_language as current_language %}
+                        <li><a href="{% url "pages:index" %}" {% if "/"|add:current_language|add:"/" == request.path %} class="active" {% endif %}>{% trans "Home" %}</a></li>
+                        <li><a href="{% url "pages:about" %}" {% if 'about' in request.path %} class="active" {% endif %}>{% trans "About Us" %}</a></li>
+                        <li><a href="{% url "hotel_listings:hotel_listings" %}" {% if 'hotel_listings' in request.path %} class="active" {% endif %}>{% trans "Hotels" %}</li>
+                        <li><a href="{% url "news:news" %}" {% if 'news' in request.path %} class="active" {% endif %}>{% trans "News" %}</a></li>
+                        <li><a href="{% url "job_listings:job_listings" %}" {% if 'job_listings' in request.path %} class="active" {% endif %}>{% trans "Jobs" %}</a></li>
+                        <li><a href="{% url "pages:faqs" %}" {% if 'faqs' in request.path %} class="active" {% endif %}>{% trans "FAQs" %}</a></li>                                
+                        <li><a href="{% url "pages:contacts" %}" {% if 'contacts' in request.path %} class="active" {% endif %}>{% trans "Contact" %}</a></li>    
 
                         {% if user.is_authenticated %}
                             <li>
-                            <a class="nav-link" href={% url 'accounts:dashboard' %}> <i class="fa-solid fa-user"></i> {{user.username}}</a>
+                            <a  {% if 'dashboard' in request.path %} class="active" {% endif %}href={% url 'accounts:dashboard' %}> <i class="fa-solid fa-user"></i> {{user.username}}</a>
                             </li>
                             <li>
                             <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">{% trans "Logout" %}</a>
@@ -58,15 +65,15 @@
                             </li>  
                         {% else %}
                             <li>
-                            <a class="nav-link" href={% url 'accounts:register' %}>{% trans "Register" %}</a>
+                            <a {% if 'register' in request.path %} class="active" {% endif %} href={% url 'accounts:register' %}>{% trans "Register" %}</a>
                             </li>
                             <li>
-                            <a class="nav-link" href={% url 'accounts:login' %}>{% trans "Login" %}</a>
+                            <a {% if 'login' in request.path %} class="active" {% endif %} href={% url 'accounts:login' %}>{% trans "Login" %}</a>
                             </li>
                         {% endif %}        
                         <li><a href="#">|</a></li>
                         <li>
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('lang-en').submit();">En</a>
+                            <a {% if current_language == "en" %} class="active" {% endif %} href="#" onclick="event.preventDefault(); document.getElementById('lang-en').submit();">En</a>
                             <form id="lang-en" action="{% url 'set_language' %}" method="post" style="display: none;">
                                 {% csrf_token %}
                                 <input type="hidden" name="next" value="{{ request.get_full_path }}">
@@ -74,7 +81,7 @@
                             </form>
                         </li>  
                         <li>
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('lang-zh-hans').submit();">简</a>
+                            <a {% if current_language == "zh-hans" %} class="active" {% endif %}  href="#" onclick="event.preventDefault(); document.getElementById('lang-zh-hans').submit();">简</a>
                             <form id="lang-zh-hans" action="{% url 'set_language' %}" method="post" style="display: none;">
                                 {% csrf_token %}
                                 <input type="hidden" name="next" value="{{ request.get_full_path }}">
@@ -82,7 +89,7 @@
                             </form>
                         </li>      
                         <li>
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('lang-zh-hant').submit();">繁</a>
+                            <a {% if current_language == "zh-hant" %} class="active" {% endif %}  href="#" onclick="event.preventDefault(); document.getElementById('lang-zh-hant').submit();">繁</a>
                             <form id="lang-zh-hant" action="{% url 'set_language' %}" method="post" style="display: none;">
                                 {% csrf_token %}
                                 <input type="hidden" name="next" value="{{ request.get_full_path }}">

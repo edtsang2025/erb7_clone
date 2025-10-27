@@ -1,4 +1,4 @@
-{% extends 'base_new.html' %} {% block content %} {% load static %}
+{% extends 'base_new.html' %} {% block content %} {% load i18n %} {% load static %}
 
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img" style="background-image: url({% static 'img/bg-img/hero1.jpg' %});">
@@ -22,7 +22,7 @@
                     <div class="advanced-search-form">
                         <!-- Search Title -->
                         <div class="search-title">
-                            <p>Search for your hotel</p>
+                            <p>{% trans "Search for your Hotel" %}</p>
                         </div>
                         <!-- Search Form -->
                         <form action='{% url "hotel_listings:hotel_search" %}' id="advanceSearch">
@@ -59,7 +59,7 @@
                                 <div class="col-12 col-md-4 col-lg-3">
                                     <!-- Submit -->
                                     <div class="form-group mb-0">
-                                        <button type="submit" class="btn south-btn">Search</button>
+                                        <button type="submit" class="btn south-btn">{% trans "Search" %}</button>
                                     </div>
                                 </div>
 

@@ -37,7 +37,7 @@
 
                             <p>{{job_listing.summary}}</p>
 
-                            <p>{{job_listing.qualifications}}</p>
+                            <p>{{job_listing.qualifications|linebreaksbr}}</p>
 
                         </div>
 
@@ -46,7 +46,7 @@
                 </div>
 
             </div>
-
+{% comment %} 
             <div class="row">
                 <div class="col-12">
                     <!-- Pagination -->
@@ -60,7 +60,7 @@
                         </nav>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </section>
     <!-- ##### Blog Area End ##### -->

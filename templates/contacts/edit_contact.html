@@ -28,6 +28,16 @@
             <h1 class="text-center mb-4">Edit message</h1>
             <form action="{% url 'contacts:edit_contact' contact.id %}" method="POST">
                 {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{form.checkin|add_label_class:"form-label"}}
+                        {{form.checkin|add_class:"form-control-plaintext"}}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{form.checkout|add_label_class:"form-label"}}
+                        {{form.checkout|add_class:"form-control-plaintext"}}
+                    </div>          
+                </div>      
                 <div class="mb-3">
                     {{form.message|add_label_class:"form-label"}}
                     <!-- form error -->
