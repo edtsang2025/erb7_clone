@@ -1800,3 +1800,7 @@ img {
   position: relative;
   z-index: 2000;
 }
+
+.navbar {
+  opacity: 0.9;
+  text-transform: uppercase; }
