@@ -45,7 +45,7 @@
                         {% get_current_language as current_language %}
                         <li><a href="{% url "pages:index" %}" {% if "/"|add:current_language|add:"/" == request.path %} class="active" {% endif %}>{% trans "Home" %}</a></li>
                         <li><a href="{% url "pages:about" %}" {% if 'about' in request.path %} class="active" {% endif %}>{% trans "About Us" %}</a></li>
-                        <li><a href="{% url "hotel_listings:hotel_listings" %}" {% if 'hotel_listings' in request.path %} class="active" {% endif %}>{% trans "Hotels" %}</li>
+                        <li><a href="{% url "hotel_listings:hotel_listings" %}" {% if 'hotel_listings' in request.path %} class="active" {% endif %}>{% trans "Hotels" %}</a></li>
                         <li><a href="{% url "news:news" %}" {% if 'news' in request.path %} class="active" {% endif %}>{% trans "News" %}</a></li>
                         <li><a href="{% url "job_listings:job_listings" %}" {% if 'job_listings' in request.path %} class="active" {% endif %}>{% trans "Jobs" %}</a></li>
                         <li><a href="{% url "pages:faqs" %}" {% if 'faqs' in request.path %} class="active" {% endif %}>{% trans "FAQs" %}</a></li>                                
@@ -71,6 +71,7 @@
                             <a {% if 'login' in request.path %} class="active" {% endif %} href={% url 'accounts:login' %}>{% trans "Login" %}</a>
                             </li>
                         {% endif %}        
+                        
                         <li><a href="#">|</a></li>
                         <li>
                             <a {% if current_language == "en" %} class="active" {% endif %} href="#" onclick="event.preventDefault(); document.getElementById('lang-en').submit();">En</a>

@@ -492,8 +492,7 @@ img {
     color: #bebebe;
     text-transform: uppercase;
     font-weight: 600; }
-  .main-header-area .classynav ul li a.active,
-  .main-header-area .classynav ul li a:hover {
+  .main-header-area .classynav ul li a {
     color: #ffffff;
   }
   .main-header-area .nav-brand {

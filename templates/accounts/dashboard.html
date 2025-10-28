@@ -55,10 +55,11 @@
                     <td>{{contact.listing | title}}</td>
                     <td>
                     <a class="btn btn-light" href="{% url 'hotel_listings:hotel_listing' contact.listing_id %}">View Hotel</a>
-                    <!--
+
                     <button class="btn btn-danger" data-url="{% url 'contacts:delete_contact' contact.id %}" data-toggle="modal" data-target="#deleteConfirmModal" data-id="{{contact.id}}">Delete Listing</button>
-                    -->
+<!--
                     <a class="btn btn-danger" href="{% url 'contacts:delete_contact' contact.id %}">Delete Inquiry</a>                 
+-->                    
                     <a class="btn btn-success" href="{% url 'contacts:edit_contact' contact.id %}">Edit Inquiry</a>                 
                     </td>
                 </tr>

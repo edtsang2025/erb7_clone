@@ -11,4 +11,12 @@ class ContactForm(forms.ModelForm):
             'row' : 5,
             'placeholder' : 'Enter your message here...'
             }),
+            'checkin' : forms.TextInput(attrs={
+            'class' : 'form-control',
+            'id' : "id_my_datetime_field"
+            }),
+            'checkout' : forms.TextInput(attrs={
+            'class' : 'form-control',
+            'id' : "id_my_datetime_field"
+            })            
         }

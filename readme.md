@@ -1,4 +1,4 @@
-# Django Clinic Project
+# Django Hotel Project
 
 ## Steps to build the project
 

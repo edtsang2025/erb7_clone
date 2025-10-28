@@ -1,0 +1,109 @@
+{% load static %}
+{% load i18n %}
+
+<!-- Top Header Area -->
+<div class="top-header-area">
+    <div class="h-100 d-md-flex justify-content-between align-items-center">
+        <div class="email-address">
+            <a href="mailto:contact@greatstayhotel.com">contact@greatstayhotel.com</a>
+        </div>
+        <div class="phone-number d-flex">
+            <div class="icon">
+                <img src="{% static 'img/icons/phone-call.png' %}" alt="">
+            </div>
+            <div class="number">
+                <a href="tel:+852 1234 5678">+852 1234 5678</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top">
+      <div class="container">
+        
+        <a class="nav-brand" href="{% url "pages:index" %}"><img src="{% static 'img/core-img/gs_logo.png' %}" alt=""></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            {% get_current_language as current_language %}
+
+            <li {% if "/"|add:current_language|add:"/" == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}><a class="nav-link" href="{% url "pages:index" %}">{% trans "Home" %}</a></li>
+
+            <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}><a class="nav-link" href="{% url "pages:about" %}">{% trans "About Us" %}</a></li>
+
+            <li {% if 'hotel_listings' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}><a class="nav-link" href="{% url "hotel_listings:hotel_listings" %}">{% trans "Hotels" %}</a></li>
+
+            <li {% if 'news' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}><a class="nav-link" href="{% url "news:news" %}">{% trans "News" %}</a></li>          
+
+            <li {% if 'job_listings' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}><a class="nav-link" href="{% url "job_listings:job_listings" %}">{% trans "Jobs" %}</a></li>
+
+            <li {% if 'faqs' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}><a class="nav-link" href="{% url "pages:faqs" %}">{% trans "FAQs" %}</a></li>                 
+
+            <li {% if 'contacts' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}><a class="nav-link" href="{% url "pages:contacts" %}">{% trans "Contact" %}</a></li>      
+
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+              <li {% if 'dashboard' in request.path %} class="nav-item mr-3 active" {% else %} class="nav-item mr-3" {% endif %}>
+                <a class="nav-link" href={% url 'accounts:dashboard' %}> {{user.username}}</a>
+              </li>
+              <!--logout -->
+              <li class='nav-item mr-3'>
+                <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">{% trans "Logout" %}</a>
+                <form action="{% url 'accounts:logout' %}" method="POST" id="logout">
+                  {% csrf_token %}
+                  <input type="hidden" />
+                </form>
+              </li>  
+            {% else %}
+              <li {% if 'register' in request.path %} class="nav-item mr-3 active" {% else %} class="nav-item mr-3" {% endif %}>
+                <a class="nav-link" href={% url 'accounts:register' %}>{% trans "Register" %}</a>
+              </li>
+              <li {% if 'login' in request.path %} class="nav-item mr-3 active" {% else %} class="nav-item mr-3" {% endif %}>
+                <a class="nav-link" href={% url 'accounts:login' %}>{% trans "Login" %}</a>
+              </li>
+            {% endif %}
+
+            
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+
+            <li {% if current_language == "en" %} class="nav-item mr-3 active" {% else %} class="nav-item mr-3" {% endif %} >
+                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('lang-en').submit();">En</a>
+                <form id="lang-en" action="{% url 'set_language' %}" method="post" style="display: none;">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                    <input type="hidden" name="language" value="en">
+                </form>
+            </li>  
+            <li {% if current_language == "zh-hans" %} class="nav-item mr-3 active" {% else %} class="nav-item mr-3" {% endif %} >
+                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('lang-zh-hans').submit();">简</a>
+                <form id="lang-zh-hans" action="{% url 'set_language' %}" method="post" style="display: none;">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                    <input type="hidden" name="language" value="zh-hans">
+                </form>
+            </li> 
+            <li {% if current_language == "zh-hant" %} class="nav-item mr-3 active" {% else %} class="nav-item mr-3" {% endif %} >
+                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('lang-zh-hant').submit();">繁</a>
+                <form id="lang-zh-hant" action="{% url 'set_language' %}" method="post" style="display: none;">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                    <input type="hidden" name="language" value="zh-hant">
+                </form>
+            </li>              
+          </u>          
+        </div>
+      </div>
+</nav>
