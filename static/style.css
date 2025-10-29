@@ -1807,5 +1807,5 @@ img {
 
 .navbar-nav .nav-link:hover {
     font-size: 1.0rem;
-    font-weight: bold;         /* Optional: emphasize the link */
+    color: white;
 } 
