@@ -52,5 +52,5 @@ class SubjectAdmin(admin.ModelAdmin):
     list_display = 'name',
     search_fields = ("name",)
 
-admin.site.register(Listing, ListingAdmin)
-admin.site.register(Subject, SubjectAdmin)
+# admin.site.register(Listing, ListingAdmin)
+# admin.site.register(Subject, SubjectAdmin)
