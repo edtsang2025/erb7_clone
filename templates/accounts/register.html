@@ -1,4 +1,4 @@
-{% extends 'base_new.html' %} {% load static %} {% load humanize %} 
+{% extends 'base_new.html' %} {% load static %} {% load humanize %} {% load i18n %}
 
 {% block content %} 
 
@@ -25,7 +25,7 @@
             
         <div class="card">
             <div class="card-header text-white" style="background-color: #947054;">
-            <h4 style="color: #fff"><i class="fas fa-user-plus"></i> Register</h4>
+            <h4 style="color: #fff"><i class="fas fa-user-plus"></i> {% trans "Register" %}</h4>
             </div>
             <div class="card-body">
             <form action="{% url 'accounts:register' %}" method="POST">

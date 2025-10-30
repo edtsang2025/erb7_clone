@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-29 21:26+0800\n"
+"POT-Creation-Date: 2025-10-30 11:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: templates/hotel_listings/hotel_listing.html:28
+#, fuzzy
+#| msgid "Search for your Hotel"
+msgid "Search for your hotel"
+msgstr "搜尋您的飯店"
+
+#: templates/hotel_listings/hotel_listing.html:36
+#: templates/hotel_listings/hotel_listings.html:34
+#: templates/hotel_listings/hotel_search.html:34
+msgid "Keyword"
+msgstr "關鍵字"
+
+#: templates/hotel_listings/hotel_listing.html:43
+#: templates/hotel_listings/hotel_listings.html:41
+#: templates/hotel_listings/hotel_search.html:41
+msgid "Cities"
+msgstr "城市"
+
+#: templates/hotel_listings/hotel_listing.html:54
+#: templates/hotel_listings/hotel_listings.html:52
+#: templates/hotel_listings/hotel_search.html:52
+msgid "Room Types"
+msgstr "客房類型"
+
+#: templates/hotel_listings/hotel_listing.html:65
+#: templates/hotel_listings/hotel_listings.html:63
+#: templates/hotel_listings/hotel_search.html:63 templates/pages/index.html:87
+msgid "Search"
+msgstr "搜尋"
+
+#: templates/hotel_listings/hotel_listing.html:130
+msgid "Make An Inquiry"
+msgstr "查詢服務"
+
 #: templates/hotel_listings/hotel_listings.html:26
 #: templates/hotel_listings/hotel_search.html:26 templates/pages/index.html:54
 msgid "Search for your Hotel"
 msgstr "搜尋您的飯店"
 
-#: templates/hotel_listings/hotel_listings.html:63
-#: templates/hotel_listings/hotel_search.html:63 templates/pages/index.html:87
-msgid "Search"
-msgstr "搜尋"
+#: templates/hotel_listings/hotel_listings.html:126
+#: templates/hotel_listings/hotel_search.html:128
+msgid "More Info"
+msgstr "詳細資訊"
 
 #: templates/pages/index.html:12
 msgid "Your dream hotel awaits"

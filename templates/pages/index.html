@@ -58,13 +58,13 @@
                             <div class="row">
                                 <div class="col-12 col-md-4 col-lg-3">
                                     <div class="form-group">
-                                        <input type="input" class="form-control" name="keywords" placeholder="Keyword">
+                                        <input type="input" class="form-control" name="keywords" placeholder='{% trans "Keyword" %}'>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4 col-lg-3">
                                     <div class="form-group">
                                         <select name="city" class="form-control" id="city">
-                                            <option selected="True" value="">Cities</option>                                            
+                                            <option selected="True" value="">{% trans "Cities" %}</option>                                            
                                             {% for key,value in city_choices.items %}
                                                 <option value="{{key}}">{{value}}</option>
                                             {% endfor %}                                              
@@ -74,7 +74,7 @@
                                 <div class="col-12 col-md-4 col-lg-3">
                                     <div class="form-group">
                                         <select class="form-control" id="catagories">
-                                            <option>Room Types</option>
+                                            <option>{% trans "Room Types" %}</option>
                                             <option>Single</option>
                                             <option>Double</option>
                                             <option>Suite</option>
@@ -97,7 +97,7 @@
     <!-- ##### Advance Search Area End ##### -->
 
     <!-- ##### Featured Properties Area Start ##### -->
-    <section class="featured-properties-area section-padding-100-50">
+    <section class="featured-properties-area section-padding-50">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -155,7 +155,7 @@
                                 </div>
                                 <br>                           
                                 <div class="text-center">
-                                    <a href={% url "hotel_listings:hotel_listing" hotel_listing.id %} class="btn south-btn">More Info</a> 
+                                    <a href={% url "hotel_listings:hotel_listing" hotel_listing.id %} class="btn south-btn">{% trans "More Info" %}</a> 
                                 </div>
                             </div>
                         </div>

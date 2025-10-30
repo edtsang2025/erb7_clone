@@ -1,5 +1,7 @@
 {% extends 'base_new.html' %} {% block content %} {% load static %}
-    <!-- ##### Breadcumb Area Start ##### -->
+{% load i18n %}
+
+<!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img" style="background-image: url({% static 'img/bg-img/hero1.jpg' %});">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
@@ -76,7 +78,7 @@
                                 </div>
                                 <br>
                                 <div class="text-center">
-                                    <a href={% url "hotel_listings:hotel_listing" hotel_listing.id %} class="btn south-btn">More Info</a> 
+                                    <a href={% url "hotel_listings:hotel_listing" hotel_listing.id %} class="btn south-btn">{% trans "More Info" %}</a> 
                                 </div>                                          
 
                             </div>
