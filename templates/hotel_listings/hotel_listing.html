@@ -24,10 +24,10 @@
                     <div class="advanced-search-form">
                         <!-- Search Title -->
                         <div class="search-title">
-                            <p>{% trans "Search for your hotel" %}</p>
+                            <p>{% trans "Search for your Hotel" %}</p>
                         </div>
                         <!-- Search Form -->
-                        <form action="#" method="post" id="advanceSearch">
+                        <form action='{% url "hotel_listings:hotel_search" %}' id="advanceSearch">
                             <div class="row">
 
                                 <div class="col-12 col-md-4 col-lg-3">
