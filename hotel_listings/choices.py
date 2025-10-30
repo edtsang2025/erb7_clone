@@ -1,7 +1,7 @@
 city_choices = {
-    "Cebu" : "Cebu",    
     "Bali" : "Bali",    
     "Bangkok" : "Bangkok",    
+    "Cebu" : "Cebu",    
     "Hawaii" : "Hawaii", 
     "Singapore" : "Singapore",  
     "Tokyo" : "Tokyo",    

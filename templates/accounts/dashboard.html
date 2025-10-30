@@ -23,7 +23,7 @@
     <div class="container">
     <div class="row text-center">
         <div class="col-md-12">
-            <p class="lead">Manage your Great Stay Hotel account</p>
+            <h2>Manage your Great Stay Hotel account</h2>
         </div>
     </div>
     </div>
@@ -40,10 +40,10 @@
 
             {% if contacts %}
             <p>Here are the hotels that you have inquired about</p>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Date of Inquiry</th>
                     <th scope="col">Hotel</th>
                     <th></th>
                 </tr>
@@ -51,16 +51,16 @@
                 <tbody>
                 {% for contact in contacts %}
                 <tr>
-                    <td>{{contact.listing_id}}</td>
-                    <td>{{contact.listing | title}}</td>
+                    <td class="align-middle">{{contact.contact_date}}</td>
+                    <td class="align-middle">{{contact.listing | title}}</td>
                     <td>
-                    <a class="btn btn-light" href="{% url 'hotel_listings:hotel_listing' contact.listing_id %}">View Hotel</a>
+                    <a class="btn south-btn" href="{% url 'hotel_listings:hotel_listing' contact.listing_id %}">View Hotel</a>
 
-                    <button class="btn btn-danger" data-url="{% url 'contacts:delete_contact' contact.id %}" data-toggle="modal" data-target="#deleteConfirmModal" data-id="{{contact.id}}">Delete Inquiry</button>
+                    <button class="btn south-btn" data-url="{% url 'contacts:delete_contact' contact.id %}" data-toggle="modal" data-target="#deleteConfirmModal" data-id="{{contact.id}}">Delete Inquiry</button>
 <!--
                     <a class="btn btn-danger" href="{% url 'contacts:delete_contact' contact.id %}">Delete Inquiry</a>                 
 -->                    
-                    <a class="btn btn-success" href="{% url 'contacts:edit_contact' contact.id %}">Edit Inquiry</a>                 
+                    <a class="btn south-btn" href="{% url 'contacts:edit_contact' contact.id %}">Edit Inquiry</a>                 
                     </td>
                 </tr>
                 {% endfor %}
