@@ -4,7 +4,7 @@ from .models import Contact
 # Register your models here.
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'listing', 'contact_date', 'message')
+    list_display = ('id', 'name', 'email', 'listing', 'checkin', 'checkout', 'contact_date', 'message')
     list_display_links = ('id', 'name')
     search_fields = ('name', 'email', 'listing')
     list_per_page = 25

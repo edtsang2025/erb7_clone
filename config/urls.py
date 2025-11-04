@@ -38,5 +38,5 @@ urlpatterns += i18n_patterns(
 )
 
 admin.site.site_header = "Great Stay Hotel Admin"
-admin.site.site_title = "MGreat Stay Hotel Admin Portal"
+admin.site.site_title = "Great Stay Hotel Admin Portal"
 admin.site.index_title = "Welcome to Great Stay Hotel  Admin Portal"
